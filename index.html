@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Heythem — Portfolio · Social Media & Vidéo</title>
+  <meta name="description" content="Portfolio de Heythem — Social Media Manager, vidéaste et créateur de contenu. Posts, carrousels, vidéos et stratégie de marque." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- ====== NAV ====== -->
+  <header class="nav">
+    <a href="#top" class="nav__logo" aria-label="Heythem — accueil">
+      <img src="assets/heythem-logo.svg" alt="" width="36" height="33" />
+    </a>
+    <nav class="nav__links">
+      <a href="#about">À propos</a>
+      <a href="#identity">Identité</a>
+      <a href="#work">Projets</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="#contact" class="nav__cta">Travaillons ensemble</a>
+  </header>
+
+  <!-- ====== HERO ====== -->
+  <section id="top" class="hero">
+    <div class="hero__inner">
+      <p class="hero__eyebrow">CMO · Stratégie · Branding · Contenu</p>
+      <h1 class="hero__title">
+        Je construis des systèmes<br/>
+        qui font <em>scaler</em> les marques.
+      </h1>
+      <p class="hero__sub">
+        <strong>Heythem Hsairi</strong> — 3+ ans à transformer des marques visibles en <strong>incontournables</strong>.
+      </p>
+      <div class="hero__actions">
+        <a href="#identity" class="btn btn--primary">Voir mes projets</a>
+        <a href="#contact" class="btn btn--ghost">Me contacter</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== ABOUT ====== -->
+  <section id="about" class="about">
+    <div class="section__head">
+      <span class="section__num">01</span>
+      <h2 class="section__title">À propos</h2>
+    </div>
+    <div class="about__grid">
+      <div class="about__bio">
+        <p class="lead">
+          Je ne fais pas juste "du marketing".<br/>
+          Je construis des <strong>systèmes qui génèrent de la croissance</strong>.
+        </p>
+        <p>
+          Je m'appelle <strong>Heythem Hsairi</strong>, CMO chez Areen Cubs, avec 3+ années d'expérience terrain en marketing, branding et exécution de contenu.
+        </p>
+        <p>
+          Je pilote tout le processus — de la stratégie à l'exécution — en m'assurant que chaque pièce fonctionne comme un seul système.
+        </p>
+        <p>
+          Sur les 3+ dernières années, j'ai accompagné plusieurs marques pour améliorer leur visibilité, structurer leur marketing et créer du contenu qui performe vraiment.
+        </p>
+        <blockquote class="about__quote">
+          La plupart des marques n'échouent pas à cause du contenu.<br/>
+          Elles échouent parce qu'elles n'ont pas de système.<br/>
+          <strong>C'est ce que je construis.</strong>
+        </blockquote>
+      </div>
+      <ul class="about__services">
+        <li><span>↳</span> Stratégies marketing claires &amp; data-driven</li>
+        <li><span>↳</span> Identités de marque fortes</li>
+        <li><span>↳</span> Contenu haute qualité (design + vidéo)</li>
+        <li><span>↳</span> Gestion social media de A à Z</li>
+        <li><span>↳</span> Systèmes de croissance scalables</li>
+      </ul>
+    </div>
+    <div class="about__stats">
+      <div><strong>3+</strong><span>années d'expérience</span></div>
+      <div><strong>10+</strong><span>marques accompagnées</span></div>
+      <div><strong>500+</strong><span>contenus produits</span></div>
+    </div>
+  </section>
+
+  <!-- ====== BRAND IDENTITY ====== -->
+  <section id="identity" class="identity">
+    <div class="section__head">
+      <span class="section__num">02</span>
+      <h2 class="section__title">Identité de marque</h2>
+    </div>
+    <p class="identity__intro">
+      Une marque forte ne s'arrête pas au logo : elle vit dans chaque détail. Voici quelques systèmes d'identité que j'ai construits — du concept à la livraison.
+    </p>
+    <div class="identity__grid" id="identity-grid"></div>
+  </section>
+
+  <!-- ====== WORK ====== -->
+  <section id="work" class="work">
+    <div class="section__head">
+      <span class="section__num">03</span>
+      <h2 class="section__title">Projets &amp; marques</h2>
+    </div>
+
+    <div class="work__filters" role="tablist" aria-label="Filtrer par type de contenu">
+      <button class="filter is-active" data-filter="all" role="tab" aria-selected="true">Tous <span class="filter__count" data-count-for="all"></span></button>
+      <button class="filter" data-filter="post" role="tab" aria-selected="false">Posts <span class="filter__count" data-count-for="post"></span></button>
+      <button class="filter" data-filter="video" role="tab" aria-selected="false">Vidéos <span class="filter__count" data-count-for="video"></span></button>
+      <button class="filter" data-filter="carousel" role="tab" aria-selected="false">Carrousels <span class="filter__count" data-count-for="carousel"></span></button>
+    </div>
+
+    <!-- Sections par marque générées depuis le tableau `brands` dans script.js -->
+    <div id="brands-container"></div>
+
+    <p class="grid-empty" id="grid-empty" hidden>Aucun contenu pour ce filtre.</p>
+
+  </section>
+
+  <!-- ====== CONTACT ====== -->
+  <section id="contact" class="contact">
+    <div class="section__head">
+      <span class="section__num">04</span>
+      <h2 class="section__title">Contact</h2>
+    </div>
+    <div class="contact__inner">
+      <h3 class="contact__pitch">
+        Une marque à <em>réveiller</em> ?<br/>
+        Parlons-en.
+      </h3>
+      <p class="contact__sub">Disponible pour collaborations, missions ponctuelles et retainers mensuels.</p>
+      <div class="contact__links">
+        <a href="mailto:heythemhsairi1@gmail.com" class="contact__link">
+          <span>Email</span>
+          <strong>heythemhsairi1@gmail.com</strong>
+        </a>
+        <a href="https://wa.me/21650914101" target="_blank" rel="noopener" class="contact__link">
+          <span>WhatsApp · Téléphone</span>
+          <strong>+216 50 914 101</strong>
+        </a>
+        <a href="https://www.linkedin.com/in/heythem-hsairi/" target="_blank" rel="noopener" class="contact__link">
+          <span>LinkedIn</span>
+          <strong>Heythem Hsairi</strong>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>© <span id="year"></span> Heythem — Tous droits réservés.</p>
+    <p class="footer__note">Conçu &amp; codé par Heythem.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
