@@ -783,30 +783,84 @@ button { font: inherit; border: 0; background: none; color: inherit; cursor: poi
   .contact__links { grid-template-columns: 1fr; }
 }
 .contact__link {
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  padding: 24px;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 30px 26px 26px;
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  transition: all 0.2s;
+  overflow: hidden;
+  transition: border-color 0.25s ease, transform 0.25s ease, background 0.25s ease;
+  text-align: left;
+}
+.contact__link::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, var(--accent) 50%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.25s ease;
 }
 .contact__link:hover {
-  border-color: var(--accent);
-  transform: translateY(-2px);
+  border-color: rgba(95, 184, 142, 0.45);
+  transform: translateY(-3px);
+  background: linear-gradient(180deg, rgba(95, 184, 142, 0.05), transparent 60%), var(--surface);
 }
-.contact__link span {
+.contact__link:hover::before { opacity: 1; }
+
+.contact__link-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(95, 184, 142, 0.10);
+  border: 1px solid rgba(95, 184, 142, 0.18);
+  color: var(--accent);
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+.contact__link-icon svg { width: 20px; height: 20px; display: block; }
+.contact__link:hover .contact__link-icon {
+  background: rgba(95, 184, 142, 0.18);
+  border-color: rgba(95, 184, 142, 0.4);
+}
+
+.contact__link-label {
   font-size: 11px;
-  letter-spacing: 2px;
+  letter-spacing: 2.5px;
   text-transform: uppercase;
   color: var(--text-dim);
 }
-.contact__link strong {
+.contact__link-value {
   font-family: var(--serif);
-  font-size: 18px;
+  font-size: clamp(15px, 1.45vw, 18px);
   font-weight: 600;
   color: var(--text);
+  letter-spacing: -0.2px;
+  line-height: 1.3;
+  word-break: break-word;
+  max-width: 100%;
+}
+.contact__link-cta {
+  margin-top: 6px;
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  color: var(--accent);
+  text-transform: none;
+  opacity: 0.55;
+  transform: translateX(-2px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.contact__link:hover .contact__link-cta {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 /* ===== FOOTER ===== */
