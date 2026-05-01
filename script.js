@@ -12,6 +12,9 @@
 // Facebook:
 //   { brand, platform: "facebook", url, type }
 //   url: full https://www.facebook.com/... post or photo URL
+// Local image (own design, not posted):
+//   { brand, platform: "image", image, type, title?, ratio? }
+//   image: relative path under assets/images/
 // ──────────────────────────────────────────────────────────────────────
 
 const brands = {
@@ -20,20 +23,18 @@ const brands = {
     role: "Direction de contenu · Vidéo · Carrousels · Posts",
     socials: [
       { platform: "Instagram", handle: "@mory__collection", url: "https://www.instagram.com/mory__collection/" },
-      // Ajouter Facebook / TikTok / Site web ici quand tu auras les liens, ex :
-      // { platform: "Facebook",  handle: "Mory Collection", url: "https://www.facebook.com/..." },
-      // { platform: "TikTok",    handle: "@mory__collection", url: "https://www.tiktok.com/@..." },
     ],
   },
-  // Pour ajouter une nouvelle marque, ex. Areen Cubs :
-  // areen: {
-  //   name: "Areen Cubs",
-  //   role: "CMO · Stratégie · Branding · Contenu",
-  //   socials: [
-  //     { platform: "Instagram", handle: "@areencubs", url: "https://www.instagram.com/areencubs/" },
-  //     { platform: "LinkedIn",  handle: "Areen Cubs",  url: "https://www.linkedin.com/company/areencubs/" },
-  //   ],
-  // },
+  froutta: {
+    name: "Froutta",
+    role: "Direction artistique · Visuels produit · Design social",
+    socials: [],
+  },
+  frida: {
+    name: "Frida Store",
+    role: "Affiche événementielle · Design social",
+    socials: [],
+  },
 };
 
 const posts = [
@@ -87,6 +88,14 @@ const posts = [
   { brand: "mory", shortcode: "DEz9airNOKx", type: "carousel", ratio: "1080 / 1080" },
   { brand: "mory", shortcode: "DCPVorBoNX9", type: "carousel", ratio: "1080 / 1080" },
   { brand: "mory", shortcode: "DBwhVIKI0_-", type: "carousel", ratio: "1080 / 1080" },
+
+  // Froutta — visuels produit (1:1)
+  { brand: "froutta", platform: "image", type: "post", ratio: "1080 / 1080", image: "assets/images/froutta-01.png", title: "Pure Orchard Entry" },
+  { brand: "froutta", platform: "image", type: "post", ratio: "1080 / 1080", image: "assets/images/froutta-02.png", title: "From Orchard to Bottle" },
+  { brand: "froutta", platform: "image", type: "post", ratio: "1080 / 1080", image: "assets/images/froutta-03.png", title: "Blueberry Fields to Bottle" },
+
+  // Frida Store — affiche événementielle (4:5)
+  { brand: "frida", platform: "image", type: "post", image: "assets/images/frida-bazar.jpg", title: "Frida Bazar — Vide Dressing 28-30 nov." },
 ];
 
 const TYPE_LABEL = {
@@ -102,6 +111,9 @@ const TYPE_GROUP = [
 ];
 
 function buildPostUrls(p) {
+  if (p.platform === "image") {
+    return { url: p.image, embed: null, platform: "image" };
+  }
   if (p.platform === "facebook") {
     const encoded = encodeURIComponent(p.url);
     return {
@@ -118,15 +130,20 @@ function buildPostUrls(p) {
 function buildCard(p) {
   const { url, embed, platform } = buildPostUrls(p);
   const ratioStyle = p.ratio ? ` style="aspect-ratio: ${p.ratio};"` : "";
-  const platformLabel = platform === "facebook" ? "Facebook" : "Instagram";
+  const platformLabel =
+    platform === "facebook" ? "Facebook" :
+    platform === "image"    ? "image"    : "Instagram";
+  const cta =
+    platform === "image" ? "Voir en grand ↗" : `Voir sur ${platformLabel} ↗`;
+  const media = platform === "image"
+    ? `<img src="${p.image}" alt="${p.title || ''}" loading="lazy" />`
+    : `<iframe src="${embed}" loading="lazy" scrolling="no" allowtransparency="true" frameborder="0" allow="encrypted-media"></iframe>`;
   return `
-    <a class="post-card" data-type="${p.type}" data-platform="${platform}"${ratioStyle} href="${url}" target="_blank" rel="noopener" aria-label="Voir ce ${TYPE_LABEL[p.type].toLowerCase()} sur ${platformLabel}">
-      <div class="post-card__media">
-        <iframe src="${embed}" loading="lazy" scrolling="no" allowtransparency="true" frameborder="0" allow="encrypted-media"></iframe>
-      </div>
+    <a class="post-card" data-type="${p.type}" data-platform="${platform}"${ratioStyle} href="${url}" target="_blank" rel="noopener" aria-label="Voir ce ${TYPE_LABEL[p.type].toLowerCase()}">
+      <div class="post-card__media">${media}</div>
       <div class="post-card__overlay">
         <span class="post-card__badge">${TYPE_LABEL[p.type]}</span>
-        <span class="post-card__cta">Voir sur ${platformLabel} ↗</span>
+        <span class="post-card__cta">${cta}</span>
       </div>
     </a>
   `;

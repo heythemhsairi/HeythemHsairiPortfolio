@@ -493,6 +493,18 @@ button { font: inherit; border: 0; background: none; color: inherit; cursor: poi
   height: calc(100% + 540px);
 }
 
+/* Local-image cards (own designs, no embed) */
+.post-card[data-platform="image"] .post-card__media { background: #000; }
+.post-card[data-platform="image"] .post-card__media::before { display: none; }
+.post-card[data-platform="image"] .post-card__media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 /* Facebook plugin embed — different layout than IG */
 .post-card[data-platform="facebook"] .post-card__media {
   background: #fff;
