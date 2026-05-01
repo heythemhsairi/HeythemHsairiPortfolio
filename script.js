@@ -25,11 +25,6 @@ const brands = {
       { platform: "Instagram", handle: "@mory__collection", url: "https://www.instagram.com/mory__collection/" },
     ],
   },
-  froutta: {
-    name: "Froutta",
-    role: "Direction artistique · Visuels produit · Design social",
-    socials: [],
-  },
   frida: {
     name: "Frida Store",
     role: "Affiche événementielle · Design social",
@@ -91,11 +86,6 @@ const posts = [
 
   // Frida Store — affiche événementielle (4:5)
   { brand: "frida", platform: "image", type: "post", image: "assets/images/frida-bazar.jpg", title: "Frida Bazar — Vide Dressing 28-30 nov." },
-
-  // Froutta — visuels produit (1:1)
-  { brand: "froutta", platform: "image", type: "post", ratio: "1080 / 1080", image: "assets/images/froutta-01.png", title: "Pure Orchard Entry" },
-  { brand: "froutta", platform: "image", type: "post", ratio: "1080 / 1080", image: "assets/images/froutta-02.png", title: "From Orchard to Bottle" },
-  { brand: "froutta", platform: "image", type: "post", ratio: "1080 / 1080", image: "assets/images/froutta-03.png", title: "Blueberry Fields to Bottle" },
 ];
 
 const TYPE_LABEL = {
