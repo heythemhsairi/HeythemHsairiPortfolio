@@ -93,7 +93,7 @@ const posts = [
   { brand: "frida", platform: "image", type: "post", image: "assets/images/frida-bazar.jpg", title: "Frida Bazar — Vide Dressing 28-30 nov." },
 
   // Bebelle Cosmétiques — visuel comparatif (4:5)
-  { brand: "bebelle", platform: "image", type: "post", image: "assets/images/bebelle-comparison.jpg", title: "Bebelle Cosmétiques — Avant / Après" },
+  { brand: "bebelle", platform: "image", type: "post", image: "assets/images/bebelle-poster.png", title: "Bebelle Cosmétiques — Avant / Après" },
 ];
 
 const TYPE_LABEL = {
