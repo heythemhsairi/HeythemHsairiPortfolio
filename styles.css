@@ -92,19 +92,15 @@ button { font: inherit; border: 0; background: none; color: inherit; cursor: poi
   overflow: hidden;
   padding: 140px var(--pad) 80px;
   background:
-    /* Hard dark column on the left, then quickly fade to fully clear so the portrait shows untouched on the right */
-    linear-gradient(90deg, var(--bg) 0%, var(--bg) 30%, rgba(11, 11, 12, 0.65) 50%, rgba(11, 11, 12, 0.05) 70%, transparent 80%, transparent 100%),
-    /* Subtle accent glow that picks up the green halo in the photo */
-    radial-gradient(700px 500px at 78% 50%, rgba(95, 184, 142, 0.12), transparent),
-    /* Banner portrait, anchored right, scaled to cover */
-    url("assets/images/banner-website.png") right center / cover no-repeat,
+    /* Banner portrait — already pre-darkened on the left, sized to cover */
+    url("assets/images/banner-website-2.png") right center / cover no-repeat,
     var(--bg);
 }
 @media (max-width: 720px) {
   .hero {
     background:
-      linear-gradient(180deg, var(--bg) 0%, rgba(11, 11, 12, 0.85) 50%, rgba(11, 11, 12, 0.55) 100%),
-      url("assets/images/banner-website.png") center bottom / cover no-repeat,
+      linear-gradient(180deg, var(--bg) 0%, rgba(11, 11, 12, 0.78) 55%, rgba(11, 11, 12, 0.5) 100%),
+      url("assets/images/banner-website-2.png") right center / cover no-repeat,
       var(--bg);
   }
 }
@@ -113,10 +109,6 @@ button { font: inherit; border: 0; background: none; color: inherit; cursor: poi
   max-width: var(--maxw);
   margin: 0 auto;
   width: 100%;
-}
-.hero__inner > * { max-width: 58%; }
-@media (max-width: 900px) {
-  .hero__inner > * { max-width: 100%; }
 }
 .hero__eyebrow {
   font-size: 11px;
