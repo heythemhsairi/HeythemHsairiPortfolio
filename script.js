@@ -89,13 +89,13 @@ const posts = [
   { brand: "mory", shortcode: "DCPVorBoNX9", type: "carousel", ratio: "1080 / 1080" },
   { brand: "mory", shortcode: "DBwhVIKI0_-", type: "carousel", ratio: "1080 / 1080" },
 
+  // Frida Store — affiche événementielle (4:5)
+  { brand: "frida", platform: "image", type: "post", image: "assets/images/frida-bazar.jpg", title: "Frida Bazar — Vide Dressing 28-30 nov." },
+
   // Froutta — visuels produit (1:1)
   { brand: "froutta", platform: "image", type: "post", ratio: "1080 / 1080", image: "assets/images/froutta-01.png", title: "Pure Orchard Entry" },
   { brand: "froutta", platform: "image", type: "post", ratio: "1080 / 1080", image: "assets/images/froutta-02.png", title: "From Orchard to Bottle" },
   { brand: "froutta", platform: "image", type: "post", ratio: "1080 / 1080", image: "assets/images/froutta-03.png", title: "Blueberry Fields to Bottle" },
-
-  // Frida Store — affiche événementielle (4:5)
-  { brand: "frida", platform: "image", type: "post", image: "assets/images/frida-bazar.jpg", title: "Frida Bazar — Vide Dressing 28-30 nov." },
 ];
 
 const TYPE_LABEL = {
@@ -167,36 +167,19 @@ function buildTypeGroup(type, items) {
   `;
 }
 
-function buildBrandSection(brandId, brand, brandPosts, filter) {
-  const groupsHtml = TYPE_GROUP
-    .filter((g) => filter === "all" || filter === g.key)
-    .map((g) => buildTypeGroup(g.key, brandPosts.filter((p) => p.type === g.key)))
-    .join("");
-  return `
-    <article class="brand-section" data-brand="${brandId}">
-      ${groupsHtml}
-    </article>
-  `;
-}
-
 function renderBrands(filter) {
   const container = document.getElementById("brands-container");
   const empty = document.getElementById("grid-empty");
   if (!container) return;
 
-  let totalShown = 0;
-  const html = Object.entries(brands)
-    .map(([id, brand]) => {
-      const brandPosts = posts.filter(
-        (p) => p.brand === id && (filter === "all" || p.type === filter)
-      );
-      if (brandPosts.length === 0) return "";
-      totalShown += brandPosts.length;
-      return buildBrandSection(id, brand, brandPosts, filter);
-    })
+  const html = TYPE_GROUP
+    .filter((g) => filter === "all" || filter === g.key)
+    .map((g) => buildTypeGroup(g.key, posts.filter((p) => p.type === g.key)))
     .join("");
 
   container.innerHTML = html;
+
+  const totalShown = posts.filter((p) => filter === "all" || p.type === filter).length;
   if (empty) empty.hidden = totalShown > 0;
 }
 
