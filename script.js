@@ -45,10 +45,8 @@ const posts = [
   { brand: "mory", shortcode: "DJroxNsM_Fv", type: "post" },
   { brand: "mory", shortcode: "DJmfMTRBYqQ", type: "post" },
   { brand: "mory", shortcode: "DMnm2EaKvcJ", type: "post" },
-  { brand: "mory", shortcode: "DHJS4ESKdyI", type: "video" },
   { brand: "mory", shortcode: "DWcGgAhjVu8", type: "video" },
   { brand: "mory", shortcode: "DRple_1DPjb", type: "video" },
-  { brand: "mory", shortcode: "DPCbBcGDBKo", type: "video" },
   { brand: "mory", shortcode: "DPhO2PFjL27", type: "video" },
   { brand: "mory", shortcode: "DVjpliZjOSj", type: "video" },
   { brand: "mory", shortcode: "DVUHHHSDFIg", type: "video" },
@@ -69,10 +67,15 @@ const posts = [
 
   // Nouveaux ajouts
   { brand: "mory", shortcode: "DXUGKozAOvW", type: "video" },
-  { brand: "mory", shortcode: "DS2pMMYiqAL", type: "video" },
   { brand: "mory", shortcode: "DSTBwOcAElQ", type: "video" },
   { brand: "mory", shortcode: "DSDl4ZvkfcG", type: "video" },
   { brand: "mory", shortcode: "DSVcwdsjAig", type: "carousel" },
+
+  // Vidéos récentes
+  { brand: "mory", shortcode: "DVBTR6FAapF", type: "video" },
+  { brand: "mory", shortcode: "DWWPM9ok1uo", type: "video" },
+  { brand: "mory", shortcode: "DVVRmoRj7Uj", type: "video" },
+  { brand: "mory", shortcode: "DUv5rAXkjtf", type: "video" },
 
   // Facebook
   { brand: "mory", platform: "facebook", type: "post",
