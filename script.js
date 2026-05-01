@@ -78,6 +78,13 @@ const posts = [
     url: "https://www.facebook.com/photo.php?fbid=122170259894509908&set=pb.61565297247993.-2207520000&type=3" },
   { brand: "mory", platform: "facebook", type: "post",
     url: "https://www.facebook.com/photo.php?fbid=122170258706509908&set=pb.61565297247993.-2207520000&type=3" },
+
+  // Carrousels carrés (1:1)
+  { brand: "mory", shortcode: "DFdUuy5o-JO", type: "carousel", ratio: "1080 / 1080" },
+  { brand: "mory", shortcode: "DFQSwHaokHm", type: "carousel", ratio: "1080 / 1080" },
+  { brand: "mory", shortcode: "DEz9airNOKx", type: "carousel", ratio: "1080 / 1080" },
+  { brand: "mory", shortcode: "DCPVorBoNX9", type: "carousel", ratio: "1080 / 1080" },
+  { brand: "mory", shortcode: "DBwhVIKI0_-", type: "carousel", ratio: "1080 / 1080" },
 ];
 
 const TYPE_LABEL = {
