@@ -342,7 +342,7 @@ const translations = {
     nav_cta: "Travaillons ensemble",
 
     hero_eyebrow: "CMO · Stratégie · Branding · Contenu",
-    hero_title: "Je construis des systèmes<br/>qui font <em>scaler</em> les marques.",
+    hero_title: "Je construis des systèmes<br/>qui font <em>scaler</em><br class=\"br-tablet\"/> les marques.",
     hero_sub: "<strong>Heythem Hsairi</strong> — 3+ ans à transformer des marques visibles en <strong>incontournables</strong>.",
     hero_cta_projects: "Voir mes projets",
     hero_cta_contact: "Me contacter",
