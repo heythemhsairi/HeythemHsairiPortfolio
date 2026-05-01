@@ -833,97 +833,45 @@ button { font: inherit; border: 0; background: none; color: inherit; cursor: poi
   margin-bottom: 48px;
 }
 .testimonials__grid {
-  column-count: 3;
-  column-gap: 24px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
 }
-@media (max-width: 1000px) {
-  .testimonials__grid { column-count: 2; }
-}
-@media (max-width: 640px) {
-  .testimonials__grid { column-count: 1; }
+@media (max-width: 720px) {
+  .testimonials__grid { grid-template-columns: 1fr; }
 }
 
 .testimonial-card {
-  position: relative;
-  break-inside: avoid;
-  margin: 0 0 24px;
-  padding: 36px 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 28px 30px 26px;
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  display: flex;
-  flex-direction: column;
-  gap: 22px;
-  overflow: hidden;
   opacity: 0;
-  transform: translateY(20px);
-  animation: testimonial-in 0.7s cubic-bezier(0.2, 0.85, 0.2, 1) forwards;
-  animation-delay: calc(var(--i) * 90ms + 100ms);
-  transition: border-color 0.25s ease, transform 0.25s ease, background 0.25s ease;
-}
-.testimonial-card::after {
-  content: "";
-  position: absolute;
-  top: 0; left: 0;
-  width: 3px;
-  height: 100%;
-  background: linear-gradient(180deg, var(--accent), transparent);
-  opacity: 0.4;
-  transition: opacity 0.25s ease;
+  transform: translateY(16px);
+  animation: testimonial-in 0.65s cubic-bezier(0.2, 0.85, 0.2, 1) forwards;
+  animation-delay: calc(var(--i) * 80ms + 100ms);
+  transition: border-color 0.25s ease, transform 0.25s ease;
 }
 .testimonial-card:hover {
-  border-color: rgba(95, 184, 142, 0.45);
-  transform: translateY(-4px);
-  background: linear-gradient(180deg, rgba(95, 184, 142, 0.05), transparent 60%), var(--surface);
+  border-color: rgba(95, 184, 142, 0.4);
+  transform: translateY(-3px);
 }
-.testimonial-card:hover::after { opacity: 1; }
-
 @keyframes testimonial-in {
   to { opacity: 1; transform: translateY(0); }
 }
 
-.testimonial-card__mark {
-  position: absolute;
-  top: 4px;
-  right: 18px;
-  font-family: var(--serif);
-  font-size: 96px;
-  font-weight: 800;
-  color: var(--accent);
-  opacity: 0.14;
-  line-height: 1;
-  pointer-events: none;
-}
-
-.testimonial-card__quote {
-  position: relative;
-  font-family: var(--serif);
-  font-size: 16px;
-  line-height: 1.6;
-  color: var(--text);
-  font-style: italic;
-  z-index: 1;
-}
-
-.testimonial-card__foot {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  margin-top: auto;
-  padding-top: 18px;
-  border-top: 1px solid var(--line);
-}
-
-.testimonial-card__id {
+.testimonial-card__head {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  flex-wrap: wrap;
 }
 .testimonial-card__brand {
   font-family: var(--serif);
-  font-size: 18px;
+  font-size: 19px;
   font-weight: 600;
   letter-spacing: -0.3px;
   color: var(--text);
@@ -934,34 +882,31 @@ button { font: inherit; border: 0; background: none; color: inherit; cursor: poi
 }
 .testimonial-card__star {
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.14);
+  color: rgba(255, 255, 255, 0.16);
   line-height: 1;
 }
-.testimonial-card__star.is-filled {
-  color: #f5b94e;
+.testimonial-card__star.is-filled { color: #f5b94e; }
+
+.testimonial-card__quote {
+  font-family: var(--serif);
+  font-size: 15.5px;
+  line-height: 1.65;
+  color: var(--text);
 }
 
 .testimonial-card__delivered {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
   font-size: 12.5px;
   line-height: 1.55;
   color: var(--text-dim);
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 8px;
 }
 .testimonial-card__delivered-label {
-  display: inline-block;
-  font-size: 9px;
-  letter-spacing: 1.6px;
-  text-transform: uppercase;
   font-weight: 600;
   color: var(--accent);
-  padding: 4px 9px;
-  border-radius: 999px;
-  background: rgba(95, 184, 142, 0.10);
-  border: 1px solid rgba(95, 184, 142, 0.28);
-  flex-shrink: 0;
+  letter-spacing: 0.2px;
+  margin-right: 4px;
 }
 
 /* ===== CONTACT ===== */

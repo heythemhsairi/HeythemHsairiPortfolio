@@ -245,18 +245,15 @@ function buildTestimonialCard(t, i) {
   ).join("");
   return `
     <article class="testimonial-card" style="--i:${i}">
-      <span class="testimonial-card__mark" aria-hidden="true">&ldquo;</span>
+      <header class="testimonial-card__head">
+        <h3 class="testimonial-card__brand">${t.brand}</h3>
+        <div class="testimonial-card__rating" aria-label="${t.stars} étoiles sur 5">${stars}</div>
+      </header>
       <blockquote class="testimonial-card__quote">${t.quote}</blockquote>
-      <footer class="testimonial-card__foot">
-        <div class="testimonial-card__id">
-          <h3 class="testimonial-card__brand">${t.brand}</h3>
-          <div class="testimonial-card__rating" aria-label="${t.stars} étoiles sur 5">${stars}</div>
-        </div>
-        <p class="testimonial-card__delivered">
-          <span class="testimonial-card__delivered-label">Livrables</span>
-          ${t.delivered}
-        </p>
-      </footer>
+      <p class="testimonial-card__delivered">
+        <span class="testimonial-card__delivered-label">Livrables ·</span>
+        ${t.delivered}
+      </p>
     </article>
   `;
 }
