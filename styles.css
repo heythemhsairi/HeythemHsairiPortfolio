@@ -118,6 +118,16 @@ button { font: inherit; border: 0; background: none; color: inherit; cursor: poi
   color: var(--accent);
   font-weight: 500;
 }
+.hero__title .word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(0.45em);
+  animation: word-rise 0.75s cubic-bezier(0.2, 0.85, 0.2, 1) forwards;
+  animation-delay: calc(var(--i) * 70ms + 120ms);
+}
+@keyframes word-rise {
+  to { opacity: 1; transform: translateY(0); }
+}
 .hero__sub {
   font-size: clamp(16px, 1.5vw, 18px);
   color: var(--text-dim);
@@ -150,6 +160,46 @@ button { font: inherit; border: 0; background: none; color: inherit; cursor: poi
 }
 .btn--ghost:hover { border-color: var(--accent); color: var(--accent); }
 
+
+/* ===== MARQUEE ===== */
+.marquee {
+  overflow: hidden;
+  border-block: 1px solid var(--line);
+  padding: 24px 0;
+  background:
+    linear-gradient(180deg, transparent 0%, rgba(95, 184, 142, 0.04) 50%, transparent 100%),
+    var(--bg);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+}
+.marquee__track {
+  display: inline-flex;
+  align-items: center;
+  gap: 36px;
+  white-space: nowrap;
+  animation: marquee 42s linear infinite;
+  will-change: transform;
+}
+.marquee__track > span {
+  font-family: var(--serif);
+  font-size: clamp(20px, 2.6vw, 34px);
+  font-weight: 600;
+  font-style: italic;
+  letter-spacing: -0.4px;
+  color: var(--text);
+}
+.marquee__track .marquee__dot {
+  font-style: normal;
+  font-size: 10px;
+  color: var(--accent);
+  opacity: 0.8;
+}
+.marquee:hover .marquee__track {
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
 
 /* ===== SECTION HEAD ===== */
 .section__head {
@@ -276,19 +326,37 @@ button { font: inherit; border: 0; background: none; color: inherit; cursor: poi
   margin-bottom: 50px;
 }
 .filter {
+  position: relative;
   padding: 9px 18px;
   border: 1px solid var(--line);
   border-radius: 999px;
   font-size: 13px;
   color: var(--text-dim);
-  transition: all 0.2s;
+  overflow: hidden;
+  isolation: isolate;
+  transition: color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
 }
-.filter:hover { color: var(--text); border-color: var(--text-dim); }
-.filter.is-active {
+.filter::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
   background: var(--accent-2);
+  border-radius: inherit;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.45s cubic-bezier(0.2, 0.85, 0.2, 1);
+}
+.filter:hover {
   color: var(--bg);
   border-color: var(--accent-2);
 }
+.filter:hover::before { transform: scaleX(1); }
+.filter.is-active {
+  color: var(--bg);
+  border-color: var(--accent-2);
+}
+.filter.is-active::before { transform: scaleX(1); }
 
 /* ===== BRAND SECTION ===== */
 .brand-section {
@@ -889,5 +957,7 @@ button { font: inherit; border: 0; background: none; color: inherit; cursor: poi
 
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
+  .hero__title .word { opacity: 1; transform: none; animation: none; }
+  .marquee__track { animation: none; }
   html { scroll-behavior: auto; }
 }

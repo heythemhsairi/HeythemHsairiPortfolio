@@ -30,6 +30,11 @@ const brands = {
     role: "Affiche événementielle · Design social",
     socials: [],
   },
+  bebelle: {
+    name: "Bebelle Cosmétiques",
+    role: "Direction artistique · Visuels comparatifs · Design social",
+    socials: [],
+  },
 };
 
 const posts = [
@@ -86,6 +91,9 @@ const posts = [
 
   // Frida Store — affiche événementielle (4:5)
   { brand: "frida", platform: "image", type: "post", image: "assets/images/frida-bazar.jpg", title: "Frida Bazar — Vide Dressing 28-30 nov." },
+
+  // Bebelle Cosmétiques — visuel comparatif (4:5)
+  { brand: "bebelle", platform: "image", type: "post", image: "assets/images/bebelle-comparison.jpg", title: "Bebelle Cosmétiques — Avant / Après" },
 ];
 
 const TYPE_LABEL = {
@@ -248,6 +256,64 @@ function renderBrandIdentity() {
   grid.innerHTML = brandIdentities.map(buildIdentityCard).join("");
 }
 
+// ─── DYNAMIC EFFECTS ─────────────────────────────────────────────────
+// Wrap each word of an element in <span class="word"> with --i index so
+// CSS can stagger its rise-in animation. Preserves inline tags like <em>.
+function staggerWords(root) {
+  if (!root) return;
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+  const textNodes = [];
+  let n;
+  while ((n = walker.nextNode())) textNodes.push(n);
+  let i = 0;
+  textNodes.forEach((node) => {
+    const parts = node.textContent.split(/(\s+)/);
+    if (parts.length === 1 && parts[0] === "") return;
+    const frag = document.createDocumentFragment();
+    parts.forEach((part) => {
+      if (part === "") return;
+      if (/^\s+$/.test(part)) {
+        frag.appendChild(document.createTextNode(part));
+      } else {
+        const span = document.createElement("span");
+        span.className = "word";
+        span.style.setProperty("--i", i++);
+        span.textContent = part;
+        frag.appendChild(span);
+      }
+    });
+    node.parentNode.replaceChild(frag, node);
+  });
+}
+
+// Count up from 0 to data-count when the element scrolls into view.
+function animateCounters() {
+  const els = document.querySelectorAll("[data-count]");
+  if (!els.length) return;
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        const target = parseInt(el.dataset.count, 10) || 0;
+        const suffix = el.dataset.suffix || "";
+        const duration = target > 100 ? 1600 : 1100;
+        const start = performance.now();
+        function tick(now) {
+          const t = Math.min(1, (now - start) / duration);
+          const eased = 1 - Math.pow(1 - t, 3);
+          el.textContent = Math.round(target * eased) + suffix;
+          if (t < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+        io.unobserve(el);
+      });
+    },
+    { threshold: 0.4 }
+  );
+  els.forEach((el) => io.observe(el));
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   // Year in footer
   const yearEl = document.getElementById("year");
@@ -257,6 +323,10 @@ document.addEventListener("DOMContentLoaded", () => {
   updateFilterCounts();
   renderBrands("all");
   renderBrandIdentity();
+
+  // Dynamic effects
+  staggerWords(document.querySelector(".hero__title"));
+  animateCounters();
 
   // Filter buttons
   const filters = document.querySelectorAll(".filter");
