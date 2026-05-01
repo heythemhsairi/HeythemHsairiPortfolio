@@ -807,6 +807,123 @@ button { font: inherit; border: 0; background: none; color: inherit; cursor: poi
   color: var(--text-dim);
 }
 
+/* ===== TESTIMONIALS ===== */
+.testimonials {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 100px var(--pad);
+}
+.testimonials__intro {
+  max-width: 720px;
+  font-size: clamp(15px, 1.4vw, 17px);
+  color: var(--text-dim);
+  margin-bottom: 48px;
+}
+.testimonials__grid {
+  column-count: 2;
+  column-gap: 24px;
+}
+@media (max-width: 720px) {
+  .testimonials__grid { column-count: 1; }
+}
+
+.testimonial-card {
+  break-inside: avoid;
+  margin: 0 0 24px;
+  padding: 28px 28px 24px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: border-color 0.25s ease, transform 0.25s ease, background 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+.testimonial-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--accent), transparent);
+  opacity: 0.5;
+  transition: opacity 0.25s ease;
+}
+.testimonial-card:hover {
+  border-color: rgba(95, 184, 142, 0.45);
+  transform: translateY(-3px);
+  background: linear-gradient(180deg, rgba(95, 184, 142, 0.04), transparent 70%), var(--surface);
+}
+.testimonial-card:hover::before { opacity: 1; }
+
+.testimonial-card__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.testimonial-card__brand {
+  font-family: var(--serif);
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+  color: var(--text);
+}
+.testimonial-card__rating {
+  display: inline-flex;
+  gap: 2px;
+}
+.testimonial-card__star {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.14);
+  line-height: 1;
+}
+.testimonial-card__star.is-filled {
+  color: #f5b94e;
+}
+
+.testimonial-card__quote {
+  font-family: var(--serif);
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--text);
+  font-style: italic;
+}
+.testimonial-card__quote::before {
+  content: "« ";
+  color: var(--accent);
+  font-weight: 600;
+  font-style: normal;
+}
+.testimonial-card__quote::after {
+  content: " »";
+  color: var(--accent);
+  font-weight: 600;
+  font-style: normal;
+}
+
+.testimonial-card__delivered {
+  margin-top: 4px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--line);
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--text-dim);
+}
+.testimonial-card__delivered::before {
+  content: "Livrables · ";
+  display: inline;
+  font-size: 10px;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 600;
+  margin-right: 4px;
+}
+
 /* ===== CONTACT ===== */
 .contact {
   max-width: var(--maxw);

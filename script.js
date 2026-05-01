@@ -190,6 +190,74 @@ function updateFilterCounts() {
   });
 }
 
+// ─── TESTIMONIALS ─────────────────────────────────────────────────────
+const testimonials = [
+  {
+    brand: "Atla3campy",
+    stars: 5,
+    quote: "7awlet nikhdem les conceptions wahdi, mais la manière dont vous avez transformé ma nouvelle page en une plateforme professionnelle prête à vendre, louer et attirer des partenaires est incroyable. J'apprécie vraiment la créativité que vous avez apportée ainsi que notre collaboration.",
+    delivered: "Transformation complète du profil Instagram en marque cohérente et professionnelle.",
+  },
+  {
+    brand: "Lab Equipment World",
+    stars: 5,
+    quote: "Vous m'impressionnez toujours ! J'adore le logo créatif et l'apparence du site web maintenant. Même si travailler avec vous est un peu coûteux, cela en vaut vraiment la peine. Vous êtes désormais mon équipe de confiance pour tous nos projets.",
+    delivered: "Création du logo, pack de posts social media et bannières de site — esthétique propre, moderne et professionnelle.",
+  },
+  {
+    brand: "Vayno",
+    stars: 5,
+    quote: "Je tiens à vous remercier pour votre excellent travail. Ce que j'ai le plus apprécié, c'est votre service client. L'équipe de design m'a expliqué tous les détails nécessaires et m'a guidé à travers les étapes pour arriver au résultat final. Je suis très satisfait du service.",
+    delivered: "Identité de marque from scratch · cartes de visite · photos de profil · couverture Facebook · icônes highlights Instagram personnalisées.",
+  },
+  {
+    brand: "Jardinage.K",
+    stars: 4,
+    quote: "L'expérience était parfaite. J'adore le logo et le style que vous avez choisi pour moi. J'aimerais simplement que les choses soient un peu plus rapides la prochaine fois. Nous collaborerons à nouveau très bientôt !",
+    delivered: "Logo qui reflète l'essence de la marque · carrousels engageants · contenu photo · scripts, montage et voix-off.",
+  },
+  {
+    brand: "Zenpharma",
+    stars: 5,
+    quote: "Zeyeed maakoum parfait. Totally worth it — hedeka aleh bech nwali netaamel maakoum.",
+    delivered: "Collaboration sur un projet de montage vidéo marketing pour amplifier le message de la marque.",
+  },
+  {
+    brand: "Meduse",
+    stars: 4,
+    quote: "Je suis globalement satisfait de la qualité de vos designs et de votre créativité. Je reste confiant quant à notre collaboration future et suis certain que nous pourrons continuer à grandir ensemble. Merci encore pour votre travail.",
+    delivered: "Bannières publicitaires et PDF imprimables · refonte des cartes de visite · roll-ups · catalogue produit en cours.",
+  },
+  {
+    brand: "GenZ",
+    stars: 5,
+    quote: "Un service rapide et une qualité exceptionnelle — je ne m'attendais pas à ça pour le prix ! n'chleh na9lo hajet oukhrine 3an 9ribe, merci !",
+    delivered: "Construction d'une identité de marque qui résonne avec leur audience cible.",
+  },
+];
+
+function buildTestimonialCard(t) {
+  const stars = Array.from({ length: 5 }, (_, i) =>
+    `<span class="testimonial-card__star${i < t.stars ? ' is-filled' : ''}" aria-hidden="true">★</span>`
+  ).join("");
+  return `
+    <article class="testimonial-card">
+      <header class="testimonial-card__head">
+        <h3 class="testimonial-card__brand">${t.brand}</h3>
+        <div class="testimonial-card__rating" aria-label="${t.stars} étoiles sur 5">${stars}</div>
+      </header>
+      <blockquote class="testimonial-card__quote">${t.quote}</blockquote>
+      <p class="testimonial-card__delivered">${t.delivered}</p>
+    </article>
+  `;
+}
+
+function renderTestimonials() {
+  const grid = document.getElementById("testimonials-grid");
+  if (!grid) return;
+  grid.innerHTML = testimonials.map(buildTestimonialCard).join("");
+}
+
 // ─── BRAND IDENTITY ───────────────────────────────────────────────────
 // Add an entry per brand identity deck/file hosted on Google Drive.
 // Make sure each file is shared as "Anyone with the link · Viewer".
@@ -323,6 +391,7 @@ document.addEventListener("DOMContentLoaded", () => {
   updateFilterCounts();
   renderBrands("all");
   renderBrandIdentity();
+  renderTestimonials();
 
   // Dynamic effects
   staggerWords(document.querySelector(".hero__title"));
