@@ -125,83 +125,6 @@ button { font: inherit; border: 0; background: none; color: inherit; cursor: poi
     url("assets/images/banner-website-2.png") right center / cover no-repeat,
     var(--bg);
 }
-/* Tablet line-break in the FR hero title — hidden everywhere except portrait tablets */
-.br-tablet { display: none; }
-@media (min-width: 720px) and (max-width: 1200px) and (orientation: portrait) {
-  .br-tablet { display: inline; }
-}
-
-/* Phones only — no banner photo, tightest type */
-@media (max-width: 720px) {
-  .hero {
-    min-height: auto;
-    padding: 130px var(--pad) 70px;
-    background:
-      radial-gradient(700px 480px at 75% 25%, rgba(95, 184, 142, 0.16), transparent 70%),
-      radial-gradient(500px 400px at 0% 100%, rgba(245, 240, 230, 0.04), transparent 70%),
-      var(--bg);
-  }
-  .hero__title {
-    font-size: clamp(34px, 9vw, 50px);
-    letter-spacing: -1px;
-    line-height: 1.1;
-    margin-bottom: 20px;
-  }
-  .hero__sub {
-    font-size: 15px;
-    margin-bottom: 26px;
-  }
-  .hero__eyebrow {
-    font-size: 10px;
-    letter-spacing: 2.4px;
-    margin-bottom: 16px;
-  }
-  .hero__actions { gap: 10px; }
-  .hero__actions .btn { padding: 12px 22px; font-size: 13px; }
-}
-
-/* Portrait tablets — keep the banner photo, dim it so 3-line title reads clearly */
-@media (min-width: 720px) and (max-width: 1200px) and (orientation: portrait) {
-  .hero {
-    min-height: 70vh;
-    padding: 150px var(--pad) 80px;
-    background:
-      linear-gradient(180deg, rgba(11, 11, 12, 0.55) 0%, rgba(11, 11, 12, 0.25) 60%, transparent 100%),
-      linear-gradient(90deg, var(--bg) 0%, rgba(11, 11, 12, 0.75) 45%, rgba(11, 11, 12, 0.35) 100%),
-      url("assets/images/banner-website-2.png") right center / cover no-repeat,
-      var(--bg);
-  }
-  .hero__title {
-    font-size: clamp(40px, 6vw, 54px);
-    line-height: 1.1;
-    letter-spacing: -1.2px;
-  }
-  .hero__sub {
-    font-size: 16px;
-    max-width: 480px;
-  }
-}
-
-/* Landscape on small / medium screens (tablets, small laptops) — smaller type */
-@media (orientation: landscape) and (max-width: 1280px) and (min-width: 720px) {
-  .hero {
-    min-height: 70vh;
-    padding: 110px var(--pad) 60px;
-  }
-  .hero__title {
-    font-size: clamp(34px, 4.6vw, 52px);
-    line-height: 1.1;
-    letter-spacing: -1px;
-  }
-  .hero__sub {
-    font-size: 15px;
-  }
-  .hero__eyebrow {
-    font-size: 10px;
-    letter-spacing: 2.4px;
-    margin-bottom: 16px;
-  }
-}
 .hero__inner {
   position: relative;
   max-width: var(--maxw);
@@ -271,6 +194,55 @@ button { font: inherit; border: 0; background: none; color: inherit; cursor: poi
 }
 .btn--ghost:hover { border-color: var(--accent); color: var(--accent); }
 
+/* ===== HERO RESPONSIVE OVERRIDES ===== */
+/* Tablet line-break in the FR hero title — reveals only on tablet-sized viewports */
+.br-tablet { display: none; }
+@media (min-width: 720px) and (max-width: 1200px) {
+  .br-tablet { display: inline; }
+}
+
+/* Phones — drop the banner photo, tightest type */
+@media (max-width: 720px) {
+  .hero {
+    min-height: auto;
+    padding: 130px var(--pad) 70px;
+    background:
+      radial-gradient(700px 480px at 75% 25%, rgba(95, 184, 142, 0.16), transparent 70%),
+      radial-gradient(500px 400px at 0% 100%, rgba(245, 240, 230, 0.04), transparent 70%),
+      var(--bg);
+  }
+  .hero__title {
+    font-size: clamp(34px, 9vw, 50px);
+    letter-spacing: -1px;
+    line-height: 1.1;
+    margin-bottom: 20px;
+  }
+  .hero__sub { font-size: 15px; margin-bottom: 26px; }
+  .hero__eyebrow { font-size: 10px; letter-spacing: 2.4px; margin-bottom: 16px; }
+  .hero__actions { gap: 10px; }
+  .hero__actions .btn { padding: 12px 22px; font-size: 13px; }
+}
+
+/* Tablet sized viewports (portrait OR landscape) — keep the photo,
+   dim it so the 3-line title is readable, scale type down for the
+   smaller viewport */
+@media (min-width: 720px) and (max-width: 1200px) {
+  .hero {
+    min-height: 70vh;
+    padding: 130px var(--pad) 70px;
+    background:
+      linear-gradient(90deg, var(--bg) 0%, rgba(11, 11, 12, 0.78) 45%, rgba(11, 11, 12, 0.4) 100%),
+      url("assets/images/banner-website-2.png") right center / cover no-repeat,
+      var(--bg);
+  }
+  .hero__title {
+    font-size: clamp(38px, 5.2vw, 56px);
+    line-height: 1.1;
+    letter-spacing: -1.2px;
+  }
+  .hero__sub { font-size: 15px; max-width: 480px; }
+  .hero__eyebrow { font-size: 10px; letter-spacing: 2.4px; margin-bottom: 16px; }
+}
 
 /* ===== MARQUEE ===== */
 .marquee {
