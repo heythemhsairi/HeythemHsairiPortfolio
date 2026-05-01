@@ -236,18 +236,24 @@ const testimonials = [
   },
 ];
 
-function buildTestimonialCard(t) {
-  const stars = Array.from({ length: 5 }, (_, i) =>
-    `<span class="testimonial-card__star${i < t.stars ? ' is-filled' : ''}" aria-hidden="true">★</span>`
+function buildTestimonialCard(t, i) {
+  const stars = Array.from({ length: 5 }, (_, idx) =>
+    `<span class="testimonial-card__star${idx < t.stars ? ' is-filled' : ''}" aria-hidden="true">★</span>`
   ).join("");
   return `
-    <article class="testimonial-card">
-      <header class="testimonial-card__head">
-        <h3 class="testimonial-card__brand">${t.brand}</h3>
-        <div class="testimonial-card__rating" aria-label="${t.stars} étoiles sur 5">${stars}</div>
-      </header>
+    <article class="testimonial-card" style="--i:${i}">
+      <span class="testimonial-card__mark" aria-hidden="true">&ldquo;</span>
       <blockquote class="testimonial-card__quote">${t.quote}</blockquote>
-      <p class="testimonial-card__delivered">${t.delivered}</p>
+      <footer class="testimonial-card__foot">
+        <div class="testimonial-card__id">
+          <h3 class="testimonial-card__brand">${t.brand}</h3>
+          <div class="testimonial-card__rating" aria-label="${t.stars} étoiles sur 5">${stars}</div>
+        </div>
+        <p class="testimonial-card__delivered">
+          <span class="testimonial-card__delivered-label">Livrables</span>
+          ${t.delivered}
+        </p>
+      </footer>
     </article>
   `;
 }
@@ -255,7 +261,9 @@ function buildTestimonialCard(t) {
 function renderTestimonials() {
   const grid = document.getElementById("testimonials-grid");
   if (!grid) return;
-  grid.innerHTML = testimonials.map(buildTestimonialCard).join("");
+  // Sort by rating descending so the strongest endorsements lead each column.
+  const sorted = [...testimonials].sort((a, b) => b.stars - a.stars);
+  grid.innerHTML = sorted.map((t, i) => buildTestimonialCard(t, i)).join("");
 }
 
 // ─── BRAND IDENTITY ───────────────────────────────────────────────────

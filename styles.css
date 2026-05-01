@@ -833,45 +833,88 @@ button { font: inherit; border: 0; background: none; color: inherit; cursor: poi
   margin-bottom: 48px;
 }
 .testimonials__grid {
-  column-count: 2;
+  column-count: 3;
   column-gap: 24px;
 }
-@media (max-width: 720px) {
+@media (max-width: 1000px) {
+  .testimonials__grid { column-count: 2; }
+}
+@media (max-width: 640px) {
   .testimonials__grid { column-count: 1; }
 }
 
 .testimonial-card {
+  position: relative;
   break-inside: avoid;
   margin: 0 0 24px;
-  padding: 28px 28px 24px;
+  padding: 36px 28px 24px;
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius);
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  transition: border-color 0.25s ease, transform 0.25s ease, background 0.25s ease;
-  position: relative;
+  gap: 22px;
   overflow: hidden;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: testimonial-in 0.7s cubic-bezier(0.2, 0.85, 0.2, 1) forwards;
+  animation-delay: calc(var(--i) * 90ms + 100ms);
+  transition: border-color 0.25s ease, transform 0.25s ease, background 0.25s ease;
 }
-.testimonial-card::before {
+.testimonial-card::after {
   content: "";
   position: absolute;
   top: 0; left: 0;
   width: 3px;
   height: 100%;
   background: linear-gradient(180deg, var(--accent), transparent);
-  opacity: 0.5;
+  opacity: 0.4;
   transition: opacity 0.25s ease;
 }
 .testimonial-card:hover {
   border-color: rgba(95, 184, 142, 0.45);
-  transform: translateY(-3px);
-  background: linear-gradient(180deg, rgba(95, 184, 142, 0.04), transparent 70%), var(--surface);
+  transform: translateY(-4px);
+  background: linear-gradient(180deg, rgba(95, 184, 142, 0.05), transparent 60%), var(--surface);
 }
-.testimonial-card:hover::before { opacity: 1; }
+.testimonial-card:hover::after { opacity: 1; }
 
-.testimonial-card__head {
+@keyframes testimonial-in {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.testimonial-card__mark {
+  position: absolute;
+  top: 4px;
+  right: 18px;
+  font-family: var(--serif);
+  font-size: 96px;
+  font-weight: 800;
+  color: var(--accent);
+  opacity: 0.14;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.testimonial-card__quote {
+  position: relative;
+  font-family: var(--serif);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text);
+  font-style: italic;
+  z-index: 1;
+}
+
+.testimonial-card__foot {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: auto;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+}
+
+.testimonial-card__id {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -880,7 +923,7 @@ button { font: inherit; border: 0; background: none; color: inherit; cursor: poi
 }
 .testimonial-card__brand {
   font-family: var(--serif);
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 600;
   letter-spacing: -0.3px;
   color: var(--text);
@@ -890,7 +933,7 @@ button { font: inherit; border: 0; background: none; color: inherit; cursor: poi
   gap: 2px;
 }
 .testimonial-card__star {
-  font-size: 15px;
+  font-size: 13px;
   color: rgba(255, 255, 255, 0.14);
   line-height: 1;
 }
@@ -898,43 +941,27 @@ button { font: inherit; border: 0; background: none; color: inherit; cursor: poi
   color: #f5b94e;
 }
 
-.testimonial-card__quote {
-  font-family: var(--serif);
-  font-size: 16px;
-  line-height: 1.55;
-  color: var(--text);
-  font-style: italic;
-}
-.testimonial-card__quote::before {
-  content: "« ";
-  color: var(--accent);
-  font-weight: 600;
-  font-style: normal;
-}
-.testimonial-card__quote::after {
-  content: " »";
-  color: var(--accent);
-  font-weight: 600;
-  font-style: normal;
-}
-
 .testimonial-card__delivered {
-  margin-top: 4px;
-  padding-top: 14px;
-  border-top: 1px dashed var(--line);
-  font-size: 13px;
+  font-size: 12.5px;
   line-height: 1.55;
   color: var(--text-dim);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px;
 }
-.testimonial-card__delivered::before {
-  content: "Livrables · ";
-  display: inline;
-  font-size: 10px;
+.testimonial-card__delivered-label {
+  display: inline-block;
+  font-size: 9px;
   letter-spacing: 1.6px;
   text-transform: uppercase;
-  color: var(--accent);
   font-weight: 600;
-  margin-right: 4px;
+  color: var(--accent);
+  padding: 4px 9px;
+  border-radius: 999px;
+  background: rgba(95, 184, 142, 0.10);
+  border: 1px solid rgba(95, 184, 142, 0.28);
+  flex-shrink: 0;
 }
 
 /* ===== CONTACT ===== */
@@ -1089,5 +1116,6 @@ button { font: inherit; border: 0; background: none; color: inherit; cursor: poi
   .reveal { opacity: 1; transform: none; transition: none; }
   .hero__title .word { opacity: 1; transform: none; animation: none; }
   .marquee__track { animation: none; }
+  .testimonial-card { opacity: 1; transform: none; animation: none; }
   html { scroll-behavior: auto; }
 }
