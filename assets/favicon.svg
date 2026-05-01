@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 97.98 89.78">
+  <style>
+    .h   { fill: #0b0b0c; }
+    .dot { fill: #5fb88e; }
+    @media (prefers-color-scheme: dark) {
+      .h { fill: #efece5; }
+    }
+  </style>
+  <polygon class="h" points="68.49 0 68.49 41.82 40.39 41.82 40.39 0 34.24 0 34.24 41.82 6.15 41.82 6.15 0 0 0 0 41.82 0 47.96 0 89.78 6.15 89.78 6.15 47.96 34.24 47.96 34.24 89.78 40.39 89.78 40.39 47.96 68.49 47.96 68.49 89.78 74.63 89.78 74.63 47.96 74.63 41.82 74.63 0 68.49 0"/>
+  <circle class="dot" cx="91.39" cy="83.2" r="6.59"/>
+</svg>

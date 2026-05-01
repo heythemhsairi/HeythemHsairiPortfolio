@@ -250,7 +250,7 @@ function buildTestimonialCard(t, i) {
       </header>
       <blockquote class="testimonial-card__quote">${t.quote}</blockquote>
       <p class="testimonial-card__delivered">
-        <span class="testimonial-card__delivered-label">Livrables ·</span>
+        <span class="testimonial-card__delivered-label">${TESTIMONIAL_LABEL[currentLang] || TESTIMONIAL_LABEL.fr}</span>
         ${t.delivered}
       </p>
     </article>
@@ -331,6 +331,189 @@ function renderBrandIdentity() {
   grid.innerHTML = brandIdentities.map(buildIdentityCard).join("");
 }
 
+// ─── I18N (FR / EN) ──────────────────────────────────────────────────
+const translations = {
+  fr: {
+    nav_about: "À propos",
+    nav_identity: "Identité",
+    nav_work: "Projets",
+    nav_testimonials: "Témoignages",
+    nav_contact: "Contact",
+    nav_cta: "Travaillons ensemble",
+
+    hero_eyebrow: "CMO · Stratégie · Branding · Contenu",
+    hero_title: "Je construis des systèmes<br/>qui font <em>scaler</em> les marques.",
+    hero_sub: "<strong>Heythem Hsairi</strong> — 3+ ans à transformer des marques visibles en <strong>incontournables</strong>.",
+    hero_cta_projects: "Voir mes projets",
+    hero_cta_contact: "Me contacter",
+
+    section_about: "À propos",
+    about_lead: "Je ne fais pas juste \"du marketing\".<br/>Je construis des <strong>systèmes qui génèrent de la croissance</strong>.",
+    about_p1: "Je m'appelle <strong>Heythem Hsairi</strong>, CMO chez Areen Cubs, avec 3+ années d'expérience terrain en marketing, branding et exécution de contenu.",
+    about_p2: "Je pilote tout le processus — de la stratégie à l'exécution — en m'assurant que chaque pièce fonctionne comme un seul système.",
+    about_p3: "Sur les 3+ dernières années, j'ai accompagné plusieurs marques pour améliorer leur visibilité, structurer leur marketing et créer du contenu qui performe vraiment.",
+    about_quote: "La plupart des marques n'échouent pas à cause du contenu.<br/>Elles échouent parce qu'elles n'ont pas de système.<br/><strong>C'est ce que je construis.</strong>",
+    service_1: "Stratégies marketing claires & data-driven",
+    service_2: "Identités de marque fortes",
+    service_3: "Contenu haute qualité (design + vidéo)",
+    service_4: "Gestion social media de A à Z",
+    service_5: "Systèmes de croissance scalables",
+    stat_years: "années d'expérience",
+    stat_brands: "marques avec qui j'ai collaboré",
+    stat_content: "contenus produits",
+
+    section_identity: "Identité de marque",
+    identity_intro: "Une marque forte ne s'arrête pas au logo : elle vit dans chaque détail. Voici quelques systèmes d'identité que j'ai construits — du concept à la livraison.",
+
+    section_work: "Projets & marques",
+    filter_all: "Tous",
+    filter_post: "Posts",
+    filter_video: "Vidéos",
+    filter_carousel: "Carrousels",
+    grid_empty: "Aucun contenu pour ce filtre.",
+
+    section_testimonials: "Témoignages",
+    testimonials_intro: "Ce que mes clients disent du travail, du process et des résultats — vrais retours, vrais projets.",
+
+    section_contact: "Contact",
+    contact_pitch: "Une marque à <em>réveiller</em> ?<br/>Parlons-en.",
+    contact_sub: "Disponible pour collaborations, missions ponctuelles et retainers mensuels.",
+    contact_label_email: "Email",
+    contact_label_wa: "WhatsApp · Téléphone",
+    contact_cta_email: "Écrire un message",
+    contact_cta_wa: "Démarrer une conversation",
+    contact_cta_li: "Voir le profil",
+
+    footer_rights: "Tous droits réservés.",
+    footer_note: "Conçu & codé par Heythem.",
+  },
+  en: {
+    nav_about: "About",
+    nav_identity: "Identity",
+    nav_work: "Work",
+    nav_testimonials: "Testimonials",
+    nav_contact: "Contact",
+    nav_cta: "Let's work together",
+
+    hero_eyebrow: "CMO · Strategy · Branding · Content",
+    hero_title: "I build systems<br/>that <em>scale</em> brands.",
+    hero_sub: "<strong>Heythem Hsairi</strong> — 3+ years turning visible brands into <strong>unmissable</strong> ones.",
+    hero_cta_projects: "See my work",
+    hero_cta_contact: "Get in touch",
+
+    section_about: "About",
+    about_lead: "I don't just \"do marketing\".<br/>I build <strong>systems that generate growth</strong>.",
+    about_p1: "I'm <strong>Heythem Hsairi</strong>, CMO at Areen Cubs, with 3+ years of hands-on experience in marketing, branding and content execution.",
+    about_p2: "I drive the full process — from strategy to execution — making sure every piece works as a single system.",
+    about_p3: "Over the past 3+ years I've partnered with multiple brands to improve their visibility, structure their marketing and create content that actually performs.",
+    about_quote: "Most brands don't fail because of content.<br/>They fail because they have no system.<br/><strong>That's what I build.</strong>",
+    service_1: "Clear, data-driven marketing strategy",
+    service_2: "Strong brand identities",
+    service_3: "High-quality content (design + video)",
+    service_4: "End-to-end social media management",
+    service_5: "Scalable growth systems",
+    stat_years: "years of experience",
+    stat_brands: "brands I've collaborated with",
+    stat_content: "pieces of content produced",
+
+    section_identity: "Brand identity",
+    identity_intro: "A strong brand doesn't stop at the logo — it lives in every detail. A few identity systems I've built, from concept to delivery.",
+
+    section_work: "Projects & brands",
+    filter_all: "All",
+    filter_post: "Posts",
+    filter_video: "Videos",
+    filter_carousel: "Carousels",
+    grid_empty: "No content for this filter.",
+
+    section_testimonials: "Testimonials",
+    testimonials_intro: "What my clients say about the work, the process and the results — real feedback, real projects.",
+
+    section_contact: "Contact",
+    contact_pitch: "A brand to <em>wake up</em>?<br/>Let's talk.",
+    contact_sub: "Available for collaborations, one-off projects and monthly retainers.",
+    contact_label_email: "Email",
+    contact_label_wa: "WhatsApp · Phone",
+    contact_cta_email: "Send a message",
+    contact_cta_wa: "Start a conversation",
+    contact_cta_li: "View profile",
+
+    footer_rights: "All rights reserved.",
+    footer_note: "Designed & coded by Heythem.",
+  },
+};
+
+// Translation labels for the type-group headings (Posts/Videos/Carousels)
+// — reused by buildTypeGroup, so we re-render the work grid on language change.
+const TYPE_GROUP_I18N = {
+  fr: {
+    post:     { title: "Posts",      hint: "Format vertical 4:5" },
+    video:    { title: "Vidéos",     hint: "Format vertical 9:16 — 1080×1920" },
+    carousel: { title: "Carrousels", hint: "Format vertical 4:5" },
+  },
+  en: {
+    post:     { title: "Posts",     hint: "Vertical 4:5 format" },
+    video:    { title: "Videos",    hint: "Vertical 9:16 format — 1080×1920" },
+    carousel: { title: "Carousels", hint: "Vertical 4:5 format" },
+  },
+};
+
+// "Livrables" / "Delivered" footer label inside each testimonial card.
+const TESTIMONIAL_LABEL = { fr: "Livrables ·", en: "Delivered ·" };
+
+let currentLang = "fr";
+
+function applyTranslations(lang) {
+  const dict = translations[lang];
+  if (!dict) return;
+  currentLang = lang;
+  document.documentElement.lang = lang;
+
+  document.querySelectorAll("[data-i18n]").forEach((el) => {
+    const key = el.dataset.i18n;
+    if (dict[key]) el.textContent = dict[key];
+  });
+  document.querySelectorAll("[data-i18n-html]").forEach((el) => {
+    const key = el.dataset.i18nHtml;
+    if (dict[key]) el.innerHTML = dict[key];
+  });
+
+  // Re-stagger the hero title (it was rebuilt by innerHTML above)
+  staggerWords(document.querySelector(".hero__title"));
+
+  // Re-render dynamic sections that bake in their own copy
+  TYPE_GROUP[0].title = TYPE_GROUP_I18N[lang].post.title;
+  TYPE_GROUP[0].hint  = TYPE_GROUP_I18N[lang].post.hint;
+  TYPE_GROUP[1].title = TYPE_GROUP_I18N[lang].video.title;
+  TYPE_GROUP[1].hint  = TYPE_GROUP_I18N[lang].video.hint;
+  TYPE_GROUP[2].title = TYPE_GROUP_I18N[lang].carousel.title;
+  TYPE_GROUP[2].hint  = TYPE_GROUP_I18N[lang].carousel.hint;
+  const activeFilter = document.querySelector(".filter.is-active")?.dataset.filter || "all";
+  renderBrands(activeFilter);
+  renderTestimonials();
+
+  // Toggle button state
+  document.querySelectorAll(".lang-btn").forEach((b) => {
+    const on = b.dataset.lang === lang;
+    b.classList.toggle("is-active", on);
+    b.setAttribute("aria-pressed", String(on));
+  });
+
+  try { localStorage.setItem("lang", lang); } catch (_) {}
+}
+
+function initLanguage() {
+  let saved = null;
+  try { saved = localStorage.getItem("lang"); } catch (_) {}
+  const browser = (navigator.language || "fr").toLowerCase().startsWith("en") ? "en" : "fr";
+  const lang = saved || browser;
+  applyTranslations(lang);
+
+  document.querySelectorAll(".lang-btn").forEach((btn) => {
+    btn.addEventListener("click", () => applyTranslations(btn.dataset.lang));
+  });
+}
+
 // ─── DYNAMIC EFFECTS ─────────────────────────────────────────────────
 // Wrap each word of an element in <span class="word"> with --i index so
 // CSS can stagger its rise-in animation. Preserves inline tags like <em>.
@@ -403,6 +586,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // Dynamic effects
   staggerWords(document.querySelector(".hero__title"));
   animateCounters();
+
+  // Language toggle (must run after sections are rendered)
+  initLanguage();
 
   // Filter buttons
   const filters = document.querySelectorAll(".filter");

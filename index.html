@@ -3,8 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Heythem — Portfolio · Social Media & Vidéo</title>
-  <meta name="description" content="Portfolio de Heythem — Social Media Manager, vidéaste et créateur de contenu. Posts, carrousels, vidéos et stratégie de marque." />
+  <title>Heythem Hsairi — Portfolio · Marketing, Branding & Content</title>
+  <meta name="description" content="Heythem Hsairi — CMO at Areen Cubs. Strategy, branding and content systems for ambitious brands. Portfolio of work for mory__collection, Vayno, Lab Equipment World, SH Wear, Maison Turbo and more." />
+  <meta name="theme-color" content="#0b0b0c" />
+
+  <!-- Favicons (SVG with auto light/dark switching) -->
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="apple-touch-icon" href="assets/heythem-logo.svg" />
+
+  <!-- Open Graph / social previews -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Heythem Hsairi — Portfolio" />
+  <meta property="og:description" content="CMO · Strategy · Branding · Content. 3+ years turning visible brands into unmissable ones." />
+  <meta property="og:image" content="assets/images/banner-website-2.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Heythem Hsairi — Portfolio" />
+  <meta name="twitter:description" content="CMO · Strategy · Branding · Content. 3+ years turning visible brands into unmissable ones." />
+  <meta name="twitter:image" content="assets/images/banner-website-2.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -19,29 +34,36 @@
       <img src="assets/heythem-logo.svg" alt="" width="36" height="33" />
     </a>
     <nav class="nav__links">
-      <a href="#about">À propos</a>
-      <a href="#identity">Identité</a>
-      <a href="#work">Projets</a>
-      <a href="#testimonials">Témoignages</a>
-      <a href="#contact">Contact</a>
+      <a href="#about" data-i18n="nav_about">À propos</a>
+      <a href="#identity" data-i18n="nav_identity">Identité</a>
+      <a href="#work" data-i18n="nav_work">Projets</a>
+      <a href="#testimonials" data-i18n="nav_testimonials">Témoignages</a>
+      <a href="#contact" data-i18n="nav_contact">Contact</a>
     </nav>
-    <a href="#contact" class="nav__cta">Travaillons ensemble</a>
+    <div class="nav__right">
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button class="lang-btn is-active" data-lang="fr" aria-pressed="true">FR</button>
+        <span aria-hidden="true">·</span>
+        <button class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <a href="#contact" class="nav__cta" data-i18n="nav_cta">Travaillons ensemble</a>
+    </div>
   </header>
 
   <!-- ====== HERO ====== -->
   <section id="top" class="hero">
     <div class="hero__inner">
-      <p class="hero__eyebrow">CMO · Stratégie · Branding · Contenu</p>
-      <h1 class="hero__title">
+      <p class="hero__eyebrow" data-i18n="hero_eyebrow">CMO · Stratégie · Branding · Contenu</p>
+      <h1 class="hero__title" data-i18n-html="hero_title">
         Je construis des systèmes<br/>
         qui font <em>scaler</em> les marques.
       </h1>
-      <p class="hero__sub">
+      <p class="hero__sub" data-i18n-html="hero_sub">
         <strong>Heythem Hsairi</strong> — 3+ ans à transformer des marques visibles en <strong>incontournables</strong>.
       </p>
       <div class="hero__actions">
-        <a href="#identity" class="btn btn--primary">Voir mes projets</a>
-        <a href="#contact" class="btn btn--ghost">Me contacter</a>
+        <a href="#identity" class="btn btn--primary" data-i18n="hero_cta_projects">Voir mes projets</a>
+        <a href="#contact" class="btn btn--ghost" data-i18n="hero_cta_contact">Me contacter</a>
       </div>
     </div>
   </section>
@@ -71,41 +93,41 @@
   <section id="about" class="about">
     <div class="section__head">
       <span class="section__num">01</span>
-      <h2 class="section__title">À propos</h2>
+      <h2 class="section__title" data-i18n="section_about">À propos</h2>
     </div>
     <div class="about__grid">
       <div class="about__bio">
-        <p class="lead">
+        <p class="lead" data-i18n-html="about_lead">
           Je ne fais pas juste "du marketing".<br/>
           Je construis des <strong>systèmes qui génèrent de la croissance</strong>.
         </p>
-        <p>
+        <p data-i18n-html="about_p1">
           Je m'appelle <strong>Heythem Hsairi</strong>, CMO chez Areen Cubs, avec 3+ années d'expérience terrain en marketing, branding et exécution de contenu.
         </p>
-        <p>
+        <p data-i18n="about_p2">
           Je pilote tout le processus — de la stratégie à l'exécution — en m'assurant que chaque pièce fonctionne comme un seul système.
         </p>
-        <p>
+        <p data-i18n="about_p3">
           Sur les 3+ dernières années, j'ai accompagné plusieurs marques pour améliorer leur visibilité, structurer leur marketing et créer du contenu qui performe vraiment.
         </p>
-        <blockquote class="about__quote">
+        <blockquote class="about__quote" data-i18n-html="about_quote">
           La plupart des marques n'échouent pas à cause du contenu.<br/>
           Elles échouent parce qu'elles n'ont pas de système.<br/>
           <strong>C'est ce que je construis.</strong>
         </blockquote>
       </div>
       <ul class="about__services">
-        <li><span>↳</span> Stratégies marketing claires &amp; data-driven</li>
-        <li><span>↳</span> Identités de marque fortes</li>
-        <li><span>↳</span> Contenu haute qualité (design + vidéo)</li>
-        <li><span>↳</span> Gestion social media de A à Z</li>
-        <li><span>↳</span> Systèmes de croissance scalables</li>
+        <li><span>↳</span> <span data-i18n="service_1">Stratégies marketing claires &amp; data-driven</span></li>
+        <li><span>↳</span> <span data-i18n="service_2">Identités de marque fortes</span></li>
+        <li><span>↳</span> <span data-i18n="service_3">Contenu haute qualité (design + vidéo)</span></li>
+        <li><span>↳</span> <span data-i18n="service_4">Gestion social media de A à Z</span></li>
+        <li><span>↳</span> <span data-i18n="service_5">Systèmes de croissance scalables</span></li>
       </ul>
     </div>
     <div class="about__stats">
-      <div><strong data-count="3" data-suffix="+">0+</strong><span>années d'expérience</span></div>
-      <div><strong data-count="40" data-suffix="+">0+</strong><span>marques avec qui j'ai collaboré</span></div>
-      <div><strong data-count="250" data-suffix="+">0+</strong><span>contenus produits</span></div>
+      <div><strong data-count="3" data-suffix="+">0+</strong><span data-i18n="stat_years">années d'expérience</span></div>
+      <div><strong data-count="40" data-suffix="+">0+</strong><span data-i18n="stat_brands">marques avec qui j'ai collaboré</span></div>
+      <div><strong data-count="250" data-suffix="+">0+</strong><span data-i18n="stat_content">contenus produits</span></div>
     </div>
   </section>
 
@@ -113,9 +135,9 @@
   <section id="identity" class="identity">
     <div class="section__head">
       <span class="section__num">02</span>
-      <h2 class="section__title">Identité de marque</h2>
+      <h2 class="section__title" data-i18n="section_identity">Identité de marque</h2>
     </div>
-    <p class="identity__intro">
+    <p class="identity__intro" data-i18n="identity_intro">
       Une marque forte ne s'arrête pas au logo : elle vit dans chaque détail. Voici quelques systèmes d'identité que j'ai construits — du concept à la livraison.
     </p>
     <div class="identity__grid" id="identity-grid"></div>
@@ -125,20 +147,19 @@
   <section id="work" class="work">
     <div class="section__head">
       <span class="section__num">03</span>
-      <h2 class="section__title">Projets &amp; marques</h2>
+      <h2 class="section__title" data-i18n="section_work">Projets &amp; marques</h2>
     </div>
 
-    <div class="work__filters" role="tablist" aria-label="Filtrer par type de contenu">
-      <button class="filter is-active" data-filter="all" role="tab" aria-selected="true">Tous <span class="filter__count" data-count-for="all"></span></button>
-      <button class="filter" data-filter="post" role="tab" aria-selected="false">Posts <span class="filter__count" data-count-for="post"></span></button>
-      <button class="filter" data-filter="video" role="tab" aria-selected="false">Vidéos <span class="filter__count" data-count-for="video"></span></button>
-      <button class="filter" data-filter="carousel" role="tab" aria-selected="false">Carrousels <span class="filter__count" data-count-for="carousel"></span></button>
+    <div class="work__filters" role="tablist" aria-label="Filter by content type">
+      <button class="filter is-active" data-filter="all" role="tab" aria-selected="true"><span data-i18n="filter_all">Tous</span> <span class="filter__count" data-count-for="all"></span></button>
+      <button class="filter" data-filter="post" role="tab" aria-selected="false"><span data-i18n="filter_post">Posts</span> <span class="filter__count" data-count-for="post"></span></button>
+      <button class="filter" data-filter="video" role="tab" aria-selected="false"><span data-i18n="filter_video">Vidéos</span> <span class="filter__count" data-count-for="video"></span></button>
+      <button class="filter" data-filter="carousel" role="tab" aria-selected="false"><span data-i18n="filter_carousel">Carrousels</span> <span class="filter__count" data-count-for="carousel"></span></button>
     </div>
 
-    <!-- Sections par marque générées depuis le tableau `brands` dans script.js -->
     <div id="brands-container"></div>
 
-    <p class="grid-empty" id="grid-empty" hidden>Aucun contenu pour ce filtre.</p>
+    <p class="grid-empty" id="grid-empty" hidden data-i18n="grid_empty">Aucun contenu pour ce filtre.</p>
 
   </section>
 
@@ -146,9 +167,9 @@
   <section id="testimonials" class="testimonials">
     <div class="section__head">
       <span class="section__num">04</span>
-      <h2 class="section__title">Témoignages</h2>
+      <h2 class="section__title" data-i18n="section_testimonials">Témoignages</h2>
     </div>
-    <p class="testimonials__intro">Ce que mes clients disent du travail, du process et des résultats — vrais retours, vrais projets.</p>
+    <p class="testimonials__intro" data-i18n="testimonials_intro">Ce que mes clients disent du travail, du process et des résultats — vrais retours, vrais projets.</p>
     <div class="testimonials__grid" id="testimonials-grid"></div>
   </section>
 
@@ -156,14 +177,14 @@
   <section id="contact" class="contact">
     <div class="section__head">
       <span class="section__num">05</span>
-      <h2 class="section__title">Contact</h2>
+      <h2 class="section__title" data-i18n="section_contact">Contact</h2>
     </div>
     <div class="contact__inner">
-      <h3 class="contact__pitch">
+      <h3 class="contact__pitch" data-i18n-html="contact_pitch">
         Une marque à <em>réveiller</em> ?<br/>
         Parlons-en.
       </h3>
-      <p class="contact__sub">Disponible pour collaborations, missions ponctuelles et retainers mensuels.</p>
+      <p class="contact__sub" data-i18n="contact_sub">Disponible pour collaborations, missions ponctuelles et retainers mensuels.</p>
       <div class="contact__links">
         <a href="mailto:heythemhsairi1@gmail.com" class="contact__link">
           <span class="contact__link-icon" aria-hidden="true">
@@ -172,9 +193,9 @@
               <path d="M3 7l9 6 9-6"/>
             </svg>
           </span>
-          <span class="contact__link-label">Email</span>
+          <span class="contact__link-label" data-i18n="contact_label_email">Email</span>
           <strong class="contact__link-value">heythemhsairi1@gmail.com</strong>
-          <span class="contact__link-cta">Écrire un message <span aria-hidden="true">↗</span></span>
+          <span class="contact__link-cta"><span data-i18n="contact_cta_email">Écrire un message</span> <span aria-hidden="true">↗</span></span>
         </a>
         <a href="https://wa.me/21650914101" target="_blank" rel="noopener" class="contact__link">
           <span class="contact__link-icon" aria-hidden="true">
@@ -182,9 +203,9 @@
               <path d="M12 2C6.5 2 2 6.5 2 12c0 1.83.5 3.55 1.38 5.03L2 22l5.13-1.34A9.92 9.92 0 0 0 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2Zm0 18a7.93 7.93 0 0 1-4.06-1.12l-.29-.18-3.05.8.81-2.97-.19-.31A7.96 7.96 0 0 1 4 12c0-4.41 3.59-8 8-8s8 3.59 8 8-3.59 8-8 8Zm4.49-5.84c-.25-.13-1.45-.71-1.67-.79-.22-.08-.39-.13-.55.13-.16.25-.63.79-.78.95-.14.16-.29.18-.54.06-.25-.13-1.06-.39-2.02-1.24-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.39.11-.51.11-.11.25-.29.38-.43.13-.14.16-.25.25-.41.08-.16.04-.31-.02-.43-.06-.13-.55-1.34-.76-1.83-.2-.48-.41-.42-.55-.43h-.47c-.16 0-.43.06-.65.31s-.86.84-.86 2.05 0 .35.07.5c.18 1.13 1.27 2.43 1.42 2.61.18.22 2.5 3.81 6.05 5.34 3.55 1.53 3.55 1.02 4.19.96.65-.06 2.08-.85 2.37-1.67.29-.83.29-1.54.2-1.69-.08-.14-.31-.22-.65-.39Z"/>
             </svg>
           </span>
-          <span class="contact__link-label">WhatsApp · Téléphone</span>
+          <span class="contact__link-label" data-i18n="contact_label_wa">WhatsApp · Téléphone</span>
           <strong class="contact__link-value">+216 50 914 101</strong>
-          <span class="contact__link-cta">Démarrer une conversation <span aria-hidden="true">↗</span></span>
+          <span class="contact__link-cta"><span data-i18n="contact_cta_wa">Démarrer une conversation</span> <span aria-hidden="true">↗</span></span>
         </a>
         <a href="https://www.linkedin.com/in/heythem-hsairi/" target="_blank" rel="noopener" class="contact__link">
           <span class="contact__link-icon" aria-hidden="true">
@@ -194,15 +215,15 @@
           </span>
           <span class="contact__link-label">LinkedIn</span>
           <strong class="contact__link-value">Heythem Hsairi</strong>
-          <span class="contact__link-cta">Voir le profil <span aria-hidden="true">↗</span></span>
+          <span class="contact__link-cta"><span data-i18n="contact_cta_li">Voir le profil</span> <span aria-hidden="true">↗</span></span>
         </a>
       </div>
     </div>
   </section>
 
   <footer class="footer">
-    <p>© <span id="year"></span> Heythem — Tous droits réservés.</p>
-    <p class="footer__note">Conçu &amp; codé par Heythem.</p>
+    <p>© <span id="year"></span> Heythem — <span data-i18n="footer_rights">Tous droits réservés.</span></p>
+    <p class="footer__note" data-i18n="footer_note">Conçu &amp; codé par Heythem.</p>
   </footer>
 
   <script src="script.js"></script>
